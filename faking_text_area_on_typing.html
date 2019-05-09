@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faking textarea on typing</title>
+</head>
+<style>
+    .nd {
+        text-align: center;
+    }
+</style>
+<div class="nd">
+<h1>Type anything slowly</h1>
+<textarea id="dis" cols="50" rows="10" style="text-align: center; " onkeypress="faking()"></textarea>
+</div>
+<body>
+        <script>
+            let f = ["B" , "ạ" , "n" , " ", "q" , "u" , "á" , " " , "n" , "g" , "ớ" , " " , "n" , "g" , "ẩ" , "n"];
+            let result ='';
+            function faking() {
+                let inputtext = document.getElementById("dis").value;
+                let j = inputtext.length;
+                for (let i=0;i<j;i++) {
+                    result += f[i];
+                    if (i === f.length) {
+                        result = '';
+                    }
+                }
+                document.getElementById("dis").value = result;
+                result='';
+                setTimeout("faking()", 0.5);
+            }
+
+
+        </script>
+</body>
+</html>
